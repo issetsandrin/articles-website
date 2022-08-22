@@ -1,0 +1,32 @@
+<%- include('../../partials/header'); %>
+
+<style>
+    body {
+        background-color: #222222; 
+    }
+    .card {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+</style>
+
+
+
+<div class="container" style="margin-top: 15% !important; padding-right: 300px !important; padding-left: 300px !important;">
+    <div class="card">
+        <div class="card-header">
+            <h2>Painel de admin</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/authenticate">
+                <label for="exampleInputEmail1">E-mail</label>
+                <input class="form-control mb-3" type="email" name="email" placeholder="exemplo@exemplo.com">
+                <label for="exampleInputPassword1">Senha</label>
+                <input class="form-control mb-5" type="password" name="password" placeholder="*********">
+                <button class="btn btn-primary btn-block" style="width: 33% !important; margin-left: 33% !important">Logar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include('../../partials/footer'); %>
+ 

@@ -1,0 +1,38 @@
+<%- include('partials/header'); %>
+<%- include('partials/homenavbar'); %>
+   
+<body>
+    <hr>
+    <div class="container">
+        <div class="jumbotron">
+            <h2 class="display-4">Bem vindo!</h2>
+            <p class="lead">Esse é apena um blog criado por mim!</p>
+            <hr class="my-4">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p class="lead">
+              <a class="btn btn-primary btn-lg" href="#" role="button">Saiba mais</a>
+            </p>
+          </div>
+        <tbody>
+            <% articles.forEach(article => { %>
+                <div class="card">
+                    <div class="card-header">
+                        <h3><%= article.title %></h3>
+                    </div>
+                    <div class="card-body">
+                        <a href="/<%= article.slug %>" class="btn btn-info">Acessar artigo</a>
+                    </div>
+                </div>
+                <br>
+            <% }); %>
+        </tbody>
+        <div class="row">
+            <div class="col col-12">
+                <a href="/article/page/2" style="text-decoration: none; float: right; font-size: 15px;">Proxima pagina ⏭️</a> 
+            </div>
+        </div><br>
+    </div>
+</body>
+
+<%- include('partials/footer'); %>
+ 

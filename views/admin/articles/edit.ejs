@@ -1,0 +1,47 @@
+<%- include('../../partials/header'); %>
+<%- include('../../partials/navbar'); %>
+
+<div class="container"><br>
+    <div class="card">
+        <div class="card-header">
+            <h2>Edite este artigo</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/articles/update">
+                <input type="hidden" value="<%= article.id %>" name="id">
+                <input class="form-control" type="text" name="title" placeholder="Defina o título da categoria..." value="<%= article.title %>"><br>
+                <label>Categoria</label>
+                <select name="category" class="form-control">
+                    <option value="">Selecione</option>
+                    <% categories.forEach((category) => { %> 
+                        <% if(category.id == article.categoryId) { %> 
+                              <option value="<%=category.id %>" selected><%= category.title %></option>
+                        <% }else{ %> 
+                            <option value="<%=category.id %>"><%= category.title %></option>
+                        <% } %> 
+                    <% }); %>
+                </select>
+                <br><textarea id="article" class="form-control" placeholder="Escreva o artigo..." name="body"></textarea><br>
+                <a style="float: right;" href="/admin/articles" class="btn btn-secondary">Voltar</a>
+                <button style="float: right; margin-right: 5px" class="btn btn-primary">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div style="display: none" id="content">
+    <%- article.body %>
+</div>
+<%- include('../../partials/footer'); %>
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    // Iniciando o script do tinymce e aplicando plugins
+    tinymce.init({
+        selector: "#article",
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+        ],
+        init_instance_callback: () => {
+            tinymce.activeEditor.setContent($("#content").html());
+        }
+    });
+</script>
